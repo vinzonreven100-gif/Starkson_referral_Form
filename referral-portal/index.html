@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Referral Portal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- VIEW 1: LANDING PAGE HERO -->
+  <main id="landingView" class="view active">
+    <div class="landing-card">
+      <div class="logo-wrapper">
+        <img src="images/logo.png" alt="Company Logo" class="starkson-logo">
+        <div class="brand-title">STARKSON</div>
+        <div class="brand-subtitle">PAPER AND PLASTIC CORPORATION</div>
+      </div>
+
+      <div class="hero-content">
+        <span class="badge">INTERNAL MOBILITY & RECRUITING</span>
+        <h2>Help us grow the team with people you trust.</h2>
+        
+        <div class="perks-row">
+          <div class="perk-chip">Priority HR Review</div>
+          <div class="perk-chip">Referral Bonus Program</div>
+          <div class="perk-chip">Strict Confidentiality</div>
+        </div>
+
+        <p>Submit your recommendation below. Our recruitment team will review the profile and reach out directly within five business days.</p>
+        
+        <button id="startReferralBtn" class="primary-btn">
+          Start a Referral
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- VIEW 2: INTERACTIVE FORM PORTAL -->
+  <main id="formView" class="view hidden">
+    <div class="form-card">
+      <header class="form-header">
+        <button id="backBtn" class="back-link">&larr; Return to Overview</button>
+        <div class="brand-mini">
+          <span class="brand-name">STARKSON</span> HR PORTAL
+        </div>
+        <h1>Employee Referral Form</h1>
+      </header>
+
+      <!-- FORM PROGRESS BAR -->
+      <div class="progress-bar-wrapper">
+        <div id="progressBar" class="progress-bar-fill"></div>
+      </div>
+
+      <form id="referralForm" novalidate>
+        
+        <!-- SECTION 1: ABOUT YOU -->
+        <div class="form-section">
+          <div class="section-title">About you</div>
+          <p class="section-desc">So we know who to credit and where to send updates.</p>
+
+          <div class="form-group">
+            <label for="referrerName">Your full name <span class="req">*</span></label>
+            <input type="text" id="referrerName" name="referrerName" placeholder="e.g. Alex Smith" required>
+            <span class="error-msg">Please enter your name.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="referrerEmail">Your work email <span class="req">*</span></label>
+            <input type="email" id="referrerEmail" name="referrerEmail" placeholder="alex.smith@starkson.com" required>
+            <span class="error-msg">Please enter your work email.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="referrerDepartment">Your department <span class="req">*</span></label>
+            <select id="referrerDepartment" name="referrerDepartment" required>
+              <option value="" disabled selected>Select department</option>
+              <option value="Engineering">Engineering</option>
+              <option value="Product">Product</option>
+              <option value="Design">Design</option>
+              <option value="Sales">Sales</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Operations">Operations</option>
+              <option value="People & Talent">People & Talent</option>
+              <option value="Finance">Finance</option>
+              <option value="Other">Other</option>
+            </select>
+            <span class="error-msg">Select your department.</span>
+          </div>
+        </div>
+
+        <!-- SECTION 2: ABOUT YOUR REFERRAL -->
+        <div class="form-section">
+          <div class="section-title">About your referral</div>
+          <p class="section-desc">Everything you know about their background and fit.</p>
+
+          <div class="form-group">
+            <label for="candidateName">Their full name <span class="req">*</span></label>
+            <input type="text" id="candidateName" name="candidateName" placeholder="e.g. Jane Doe" required>
+            <span class="error-msg">Please enter candidate name.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="candidateEmail">Their email <span class="req">*</span></label>
+            <input type="email" id="candidateEmail" name="candidateEmail" placeholder="jane.doe@example.com" required>
+            <span class="error-msg">Please enter candidate email.</span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="candidatePhone">Their phone <span class="optional">(optional)</span></label>
+              <input type="tel" id="candidatePhone" name="candidatePhone" placeholder="+1 (555) 000-0000">
+            </div>
+
+            <div class="form-group">
+              <label for="candidatePortfolio">LinkedIn or portfolio <span class="optional">(optional)</span></label>
+              <input type="url" id="candidatePortfolio" name="candidatePortfolio" placeholder="https://linkedin.com/in/username">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="targetRole">Role or team they'd fit <span class="req">*</span></label>
+            <input type="text" id="targetRole" name="targetRole" placeholder="Operator" required>
+            <span class="error-msg">Specify the role or team.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="relationship">How do you know them? <span class="req">*</span></label>
+            <select id="relationship" name="relationship" required>
+              <option value="" disabled selected>Select relationship</option>
+              <option value="Former colleague">Former colleague</option>
+              <option value="Friend">Friend</option>
+              <option value="Family">Family</option>
+              <option value="School connection">School connection</option>
+              <option value="Industry contact">Industry contact</option>
+              <option value="Other">Other</option>
+            </select>
+            <span class="error-msg">Select how you know them.</span>
+          </div>
+
+          <div class="form-group">
+            <div class="label-header">
+              <label for="notes">Additional message for HR team <span class="optional">(optional)</span></label>
+              <span class="counter"><span id="charCount">0</span>/500</span>
+            </div>
+            <textarea id="notes" name="notes" rows="3" maxlength="500" placeholder="Share any extra context or notes for the hiring team..."></textarea>
+          </div>
+
+          <!-- RESUME UPLOAD (OPTIONAL) -->
+          <div class="form-group">
+            <label>Resume <span class="optional">(optional, PDF or Word)</span></label>
+            <div class="drop-zone" id="dropZone">
+              <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" class="file-input">
+              <div class="drop-zone-content" id="dropZoneContent">
+                <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <p>Drag and drop your file here, or <span>browse files</span></p>
+                <span class="subtext">Optional — our team can also request this directly from the candidate.</span>
+              </div>
+              <div id="filePreview" class="file-preview hidden">
+                <span class="file-name" id="fileName">resume.pdf</span>
+                <button type="button" id="removeFileBtn" class="remove-btn">&times;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" id="submitBtn" class="primary-btn">
+          <span id="btnText">Submit referral</span>
+          <span id="loadingSpinner" class="spinner hidden"></span>
+        </button>
+        <p class="submit-note">A confirmation email containing these details will be sent to you.</p>
+      </form>
+
+      <div id="statusMessage" class="status-box hidden"></div>
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
