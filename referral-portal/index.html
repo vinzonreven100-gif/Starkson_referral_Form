@@ -68,7 +68,7 @@
           <div class="form-group">
             <label for="referrerEmail">Your work email <span class="req">*</span></label>
             <input type="email" id="referrerEmail" name="referrerEmail" placeholder="alex.smith@starkson.com" required>
-            <span class="error-msg">Please enter your work email.</span>
+            <span class="error-msg">Please enter a valid work email.</span>
           </div>
 
           <div class="form-group">
@@ -101,15 +101,16 @@
           </div>
 
           <div class="form-group">
-            <label for="candidateEmail">Their email <span class="req">*</span></label>
-            <input type="email" id="candidateEmail" name="candidateEmail" placeholder="jane.doe@example.com" required>
-            <span class="error-msg">Please enter candidate email.</span>
+            <label for="candidateEmail">Their Gmail <span class="req">*</span></label>
+            <input type="email" id="candidateEmail" name="candidateEmail" placeholder="jane.doe@gmail.com" required>
+            <span class="error-msg">Please enter a valid Gmail address (e.g., name@gmail.com).</span>
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label for="candidatePhone">Their phone <span class="optional">(optional)</span></label>
-              <input type="tel" id="candidatePhone" name="candidatePhone" placeholder="+1 (555) 000-0000">
+              <label for="candidatePhone">Their phone (PH 11 digits) <span class="req">*</span></label>
+              <input type="tel" id="candidatePhone" name="candidatePhone" placeholder="09123456789" maxlength="11" required>
+              <span class="error-msg">Must be a valid 11-digit Philippine number (e.g. 09123456789).</span>
             </div>
 
             <div class="form-group">
@@ -146,11 +147,11 @@
             <textarea id="notes" name="notes" rows="3" maxlength="500" placeholder="Share any extra context or notes for the hiring team..."></textarea>
           </div>
 
-          <!-- RESUME UPLOAD (OPTIONAL) -->
-          <div class="form-group">
-            <label>Resume <span class="optional">(optional, PDF or Word)</span></label>
+          <!-- RESUME UPLOAD (REQUIRED) -->
+          <div class="form-group" id="resumeGroup">
+            <label>Resume <span class="req">*</span> <span class="optional">(PDF or Word)</span></label>
             <div class="drop-zone" id="dropZone">
-              <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" class="file-input">
+              <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" class="file-input" required>
               <div class="drop-zone-content" id="dropZoneContent">
                 <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -158,13 +159,14 @@
                   <line x1="12" y1="3" x2="12" y2="15"></line>
                 </svg>
                 <p>Drag and drop your file here, or <span>browse files</span></p>
-                <span class="subtext">Optional — our team can also request this directly from the candidate.</span>
+                <span class="subtext">Required: Upload candidate resume (.pdf, .doc, .docx).</span>
               </div>
               <div id="filePreview" class="file-preview hidden">
                 <span class="file-name" id="fileName">resume.pdf</span>
                 <button type="button" id="removeFileBtn" class="remove-btn">&times;</button>
               </div>
             </div>
+            <span class="error-msg">Please upload a resume file.</span>
           </div>
         </div>
 
